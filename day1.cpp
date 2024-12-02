@@ -4,10 +4,7 @@
 #include <vector>
 
 int main() {
-    std::cout << "Enter input file name: ";
-    std::string filename;
-    std::getline(std::cin, filename);
-    std::ifstream file(filename);
+    std::ifstream file("./input1.txt");
     if(!file.is_open())
         return EXIT_FAILURE;
     std::string line;
