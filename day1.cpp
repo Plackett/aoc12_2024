@@ -1,12 +1,10 @@
 #include <algorithm>
-#include <fstream>
 #include <iostream>
 #include <vector>
+#include "inputData.h"
 
 int main() {
-    std::ifstream file("./input1.txt");
-    if(!file.is_open())
-        return EXIT_FAILURE;
+    std::ifstream file = readInputData(1);
     std::string line;
     std::vector<long long> leftList{};
     std::vector<long long> rightList{};
