@@ -2,28 +2,29 @@
 #include <iostream>
 #include <vector>
 #include "inputData.h"
+#include <cstdint>
 
 int main() {
     std::ifstream file = readInputData(1);
     std::string line;
-    std::vector<long long> leftList{};
-    std::vector<long long> rightList{};
+    std::vector<int32_t> leftList{};
+    std::vector<int32_t> rightList{};
     while(std::getline(file, line)) {
-        leftList.push_back(std::stoll(line.substr(0, line.find_first_of(' '))));
-        rightList.push_back(std::stoll(line.substr(line.find_first_of(' '))));
+        leftList.push_back(std::stol(line.substr(0, line.find_first_of(' '))));
+        rightList.push_back(std::stol(line.substr(line.find_first_of(' '))));
     }
     std::sort(leftList.begin(), leftList.end());
     std::sort(rightList.begin(), rightList.end());
-    long long distanceSum = 0;
+    int32_t distanceSum = 0;
     for(int i = 0; i < leftList.size(); i++) {
         distanceSum += std::abs(leftList[i] - rightList[i]);
     }
     std::cout << "Distance Sum: " << distanceSum << std::endl;
     distanceSum = 0;
     int occurrences = 0;
-    for(long long & i : leftList) {
+    for(int32_t & i : leftList) {
         occurrences = 0;
-        for(const long long j : rightList) {
+        for(const int32_t j : rightList) {
             if(j == i) {
                 occurrences++;
             }
