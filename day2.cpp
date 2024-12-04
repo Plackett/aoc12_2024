@@ -4,7 +4,7 @@
 #include "inputData.h"
 
 int main() {
-	std::ifstream file = readInputData(2);
+	std::stringstream file = readInputData(2);
 	std::vector<std::vector<int>> levelData{};
 	std::string line;
 	while(std::getline(file,line)) {

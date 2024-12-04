@@ -4,7 +4,7 @@
 #include "inputData.h"
 
 int main() {
-	std::ifstream file = readInputData(3);
+	std::stringstream file = readInputData(3);
 	std::string line;
 	int sum = 0;
 	int sumparttwo = 0;

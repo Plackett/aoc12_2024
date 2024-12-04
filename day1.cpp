@@ -5,7 +5,7 @@
 #include <cstdint>
 
 int main() {
-    std::ifstream file = readInputData(1);
+    std::stringstream file = readInputData(1);
     std::string line;
     std::vector<int32_t> leftList{};
     std::vector<int32_t> rightList{};
@@ -33,6 +33,5 @@ int main() {
         distanceSum += i;
     }
     std::cout << "Similarity Score: " << distanceSum << std::endl;
-    file.close();
     return EXIT_SUCCESS;
 }

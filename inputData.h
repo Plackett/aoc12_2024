@@ -1,8 +1,9 @@
 #ifndef INPUTDATA_H
 #define INPUTDATA_H
 #include <fstream>
+#include <sstream>
 
-inline std::ifstream readInputData(const int day) {
+inline std::stringstream readInputData(const int day) {
 	std::string fileName = "input";
 	fileName += std::to_string(day);
 	fileName += ".txt";
@@ -11,7 +12,9 @@ inline std::ifstream readInputData(const int day) {
 		std::cerr << "Could not open input" << day << ".txt! Please try again." << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
-	return file;
+	std::stringstream buffer;
+	buffer << file.rdbuf();
+	return buffer;
 }
 
 #endif //INPUTDATA_H
