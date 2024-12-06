@@ -8,5 +8,6 @@ add_executable(aoc12_2024
         inputData.h
         #day3.cpp
         #day4.cpp
-        day5.cpp
+        #day5.cpp
+        day6.cpp
 )

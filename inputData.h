@@ -2,6 +2,7 @@
 #define INPUTDATA_H
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 inline std::stringstream readInputData(const int day) {
 	std::string fileName = "input";
