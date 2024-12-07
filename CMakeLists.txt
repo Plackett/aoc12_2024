@@ -9,5 +9,6 @@ add_executable(aoc12_2024
         #day3.cpp
         #day4.cpp
         #day5.cpp
-        day6.cpp
+        #day6.cpp
+        day7.cpp
 )
