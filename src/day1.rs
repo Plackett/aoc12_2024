@@ -3,7 +3,7 @@ use std::io::{self, BufRead, BufReader};
 
 pub fn day1() -> io::Result<()> {
     // Handle the result of File::open
-    let file = File::open("../input1.txt")?;
+    let file = File::open("./input1.txt")?;
     let file_reader = BufReader::new(file);
 
     let mut left_col: Vec<i32> = vec![];

@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use std::collections::HashSet;
 
 pub fn day8() {
-    let file: String = fs::read_to_string("../input8.txt").unwrap();
+    let file: String = fs::read_to_string("./input8.txt").unwrap();
     let lines: Vec<&str> = file.split('\n').filter(|line| !line.is_empty()).collect();
 
     let mut antennas = HashMap::<char, Vec<(i32, i32)>>::new();

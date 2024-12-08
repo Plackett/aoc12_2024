@@ -9,4 +9,7 @@ If I become bored I might add a token input option for each one.
 # Day 7 Update
 I have received an anonymous challenge to rewrite my code in rust so I have created a folder titled Rust Rewrite where ill put all my rewritten code.
 
+# Day 8 Update
+all rust code is now inside the src folder and all C++ code is inside the src-cpp folder. Use CMake to compile the C++ solutions by uncommenting that one day in CMakeLists.txt. For the rust solutions just `cargo run` using the rust files to compile it, everything is connected to main.rs.
+
 -Niko Krinos 2024

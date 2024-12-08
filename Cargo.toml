@@ -5,7 +5,7 @@ edition = "2021"
 
 [[bin]]
 name = "aoc12_2024"
-path = "main.rs"
+path = "src/main.rs"
 
 [dependencies]
 console = "0.15.8"
