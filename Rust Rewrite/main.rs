@@ -5,6 +5,9 @@ use console::Term;
 mod day1;
 use day1::day1;
 
+mod day8;
+use day8::day8;
+
 fn user_input(term : &Term)
 {
     match term.read_char() {
@@ -15,11 +18,17 @@ fn user_input(term : &Term)
                 day1();
                 println!("Execution time: {:.2?} seconds", start_time.elapsed().as_secs_f64());
             },
+            '8' => {
+                let start_time = Instant::now();
+                day8();
+                println!("Execution time: {:.2?} seconds", start_time.elapsed().as_secs_f64());
+            },
             // add more as I rewrite them ig
             '*' => {
                 let start_time = Instant::now();
                 // all days go here
                 day1();
+                day8();
 
                 println!("Execution time for all days: {:.2?} seconds", start_time.elapsed().as_secs_f64());
             },
