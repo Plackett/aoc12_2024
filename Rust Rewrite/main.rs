@@ -16,12 +16,14 @@ fn user_input(term : &Term)
             '1' => {
                 let start_time = Instant::now();
                 day1();
-                println!("Execution time: {:.2?} seconds", start_time.elapsed().as_secs_f64());
+                let elapsed = start_time.elapsed();
+                println!("Execution time: {:.7?} seconds", elapsed.as_secs_f64());
             },
             '8' => {
                 let start_time = Instant::now();
                 day8();
-                println!("Execution time: {:.2?} seconds", start_time.elapsed().as_secs_f64());
+                let elapsed = start_time.elapsed();
+                println!("Execution time: {:.7?} seconds", elapsed.as_secs_f64());
             },
             // add more as I rewrite them ig
             '*' => {
@@ -30,7 +32,8 @@ fn user_input(term : &Term)
                 day1();
                 day8();
 
-                println!("Execution time for all days: {:.2?} seconds", start_time.elapsed().as_secs_f64());
+                let elapsed = start_time.elapsed();
+                println!("Execution time for all days: {:.7?} seconds", elapsed.as_secs_f64());
             },
             _ => {
                 println!("try again with a day number or *.");

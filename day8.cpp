@@ -1,6 +1,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -18,6 +19,7 @@ struct vec2 {
 };
 
 int main() {
+    auto t1 = std::chrono::high_resolution_clock::now();
     std::stringstream file = readInputData(8);
     std::map<char, std::vector<vec2>> antennas{};
     std::set<vec2> directAntinodes;
@@ -85,6 +87,8 @@ int main() {
 
     std::cout << "Number of direct antinodes: " << directAntinodes.size() << std::endl;
     std::cout << "Number of harmonic antinodes (including direct): " << harmonicAntinodes.size() << std::endl;
-
+    auto t2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> ms_int = t2 - t1;
+    std::cout << "elapsed time: " << ms_int.count() << " s" << std::endl;
     return EXIT_SUCCESS;
 }
