@@ -6,6 +6,8 @@ mod day1;
 use day1::day1;
 
 mod day8;
+mod day2;
+
 use day8::day8;
 
 fn user_input(term : &Term)
