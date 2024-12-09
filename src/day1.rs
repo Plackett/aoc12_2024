@@ -1,7 +1,7 @@
 use std::fs;
 use std::collections::BTreeMap;
 
-/*pub fn day1() {
+pub fn day1() {
     let file: String = fs::read_to_string("./input1.txt").unwrap();
     let lines : Vec<&str> = file.split('\n').filter(|line| !line.is_empty()).collect();
 
@@ -55,78 +55,4 @@ use std::collections::BTreeMap;
 
     println!("The sum of the distances is: {}",distance_sum);
 
-}*/
-
-pub fn day1() -> Result<(), Box<dyn std::error::Error>> {
-    let data_in = fs::read_to_string("./input1.txt")?;
-    let binding: Vec<i32> = data_in.split_whitespace().map(|a| a.parse::<i32>().unwrap()).collect();
-    let size = binding.len();
-
-    let (mut left, mut right) = (BTreeMap::new(), BTreeMap::new());
-
-    let mut bind_it = binding.iter();
-
-    loop {
-        if let (Some(l), Some(r)) = (bind_it.next(), bind_it.next()) {
-            *right.entry(*l).or_insert(0) += 1;
-            *left.entry(*r).or_insert(0) += 1;
-        } else {
-            break
-        }
-    }
-
-    // println!("{:?}, {:?}", left, right);
-
-    let mut sum = 0;
-
-    let mut left_it = left.iter();
-    let mut right_it = right.iter();
-
-    let (mut val_left, mut val_right) = (0, 0);
-    let (mut left_left, mut left_right) = (0, 0);
-
-    let mut count = 0;
-    while count < size / 2 {
-        if left_left == 0 {
-            let temp = left_it.next().unwrap();
-            val_left = *temp.0;
-            left_left = *temp.1;
-        }
-
-        if left_right == 0 {
-            let temp = right_it.next().unwrap();
-            val_right = *temp.0;
-            left_right = *temp.1;
-        }
-
-        let min: i32 = left_left.min(left_right);
-
-        sum += min * val_left.abs_diff(val_right) as i32;
-        // println!("{}, {}, {}, {}", min, sum, val_left, val_right);
-
-        count += usize::try_from(min)?;
-
-        if left_left == left_right {
-            left_right = 0;
-            left_left = 0;
-        } else if left_left < left_right {
-            left_left = 0;
-            left_right -= min;
-        } else {
-            left_right = 0;
-            left_left -= min;
-        }
-    }
-
-    println!("{}", sum);
-
-    let mut dup = 0;
-
-    for (key, val) in left {
-        dup += key * val * *right.entry(key).or_insert(0);
-    }
-
-    println!("{}", dup);
-
-    Ok(())
 }
