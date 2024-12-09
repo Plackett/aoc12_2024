@@ -7,7 +7,7 @@
 
 #include "inputData.h"
 
-// this one ain't mine
+// this helper function ain't mine
 void printInt128(__int128 num) {
     if (num == 0) {
         std::cout << "0";
