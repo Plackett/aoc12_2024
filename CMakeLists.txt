@@ -12,7 +12,8 @@ add_executable(aoc12_2024
         #src-cpp/day6.cpp
         #src-cpp/day7.cpp
         #src-cpp/day8.cpp
-        src-cpp/day9.cpp
+        #src-cpp/day9.cpp
+        src-cpp/day10.cpp
         #src-cpp/day8.cpp
         #src-cpp/day9.cpp
         #src-cpp/day10.cpp
