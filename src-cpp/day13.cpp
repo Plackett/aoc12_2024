@@ -104,5 +104,5 @@ int main() {
     std::cout << "Total prizes won after adjustment: " << prizesWonAdjusted << std::endl;
     std::cout << "Minimum tokens spent after adjustment: " << totalTokensAdjusted << std::endl;
 
-    return 0;
+    return EXIT_SUCCESS;
 }
