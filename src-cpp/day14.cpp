@@ -76,10 +76,7 @@ int main() {
         robots.emplace_back(pos, vel);
     }
 
-    std::pair<int,int> leastOverlap= {0,0};
-
-    // Loop through the simulation steps
-    for (int t = 1; t <= 100; ++t) {
+    for (int t = 1; t <= 10000; ++t) {
 
         // Update robot positions
         for (auto& [pos, vel] : robots) {
@@ -95,9 +92,9 @@ int main() {
             positions.insert(pos);
         }
 
-        if(positions.size() > leastOverlap.first) {
-            leastOverlap.first = positions.size();
-            leastOverlap.second = t;
+
+        if(t == 100) {
+            std::cout << "Safety factor after 100 seconds: " << calcSafety(robots) << std::endl;
         }
 
         std::string filename = "./day14/sec";
@@ -106,8 +103,5 @@ int main() {
         printRobotsToFile(positions,output,t);
     }
 
-    std::cout << "Christmas tree detected at: " << leastOverlap.second << std::endl;
-
-    std::cout << "Safety factor after 100 seconds: " << calcSafety(robots) << std::endl;
     return EXIT_SUCCESS;
 }
