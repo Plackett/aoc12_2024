@@ -76,7 +76,7 @@ int main() {
         robots.emplace_back(pos, vel);
     }
 
-    for (int t = 1; t <= 10000; ++t) {
+    for (int t = 1; t <= 12000; ++t) {
 
         // Update robot positions
         for (auto& [pos, vel] : robots) {
@@ -88,19 +88,26 @@ int main() {
         }
 
         std::set<std::pair<int, int>> positions;
+        bool overlap = false;
         for (const auto& [pos, vel] : robots) {
-            positions.insert(pos);
+            if(!positions.insert(pos).second) {
+                overlap = true;
+            }
         }
 
+        if (!overlap) {
+            std::cout << "Potential Christmas Tree at " << t << std::endl;
+            std::string filename = "./day14/sec";
+            filename += std::to_string(t) + ".txt";
+            std::ofstream output(filename);
+            printRobotsToFile(positions,output,t);
+            std::cout << "Outputted to " << filename << std::endl;
+        }
 
         if(t == 100) {
             std::cout << "Safety factor after 100 seconds: " << calcSafety(robots) << std::endl;
         }
 
-        std::string filename = "./day14/sec";
-        filename += std::to_string(t) + ".txt";
-        std::ofstream output(filename);
-        printRobotsToFile(positions,output,t);
     }
 
     return EXIT_SUCCESS;
