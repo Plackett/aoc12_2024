@@ -6,12 +6,21 @@
 
 // THIS FUNCTION IS HANDWRITTEN FROM MY DECOMPILATION OF MY INPUT
 int computeOutput(int &A, int &B, int &C) {
-    B = (A % 8) ^ (A >> B) ^ C; // Compute B
-    const int output = B % 8;   // Output based on B
-    C = A >> 3;                 // Update C
-    A = A >> 3;                 // Update A
+    C = A >> ( A % 8 ^ 1);
+    B = A % 8 ^ 1 ^ 5 ^ C ;
+    const int output = B % 8;
+    A = A >> 3;
     return output;
 }
+
+// 2 4 => B = A % 8
+// 1 1 => B = B ^ 1
+// 7 5 => C = A >> B
+// 1 5 => B = B ^ 5
+// 0 3 => A = A >> 3
+// 4 3 => B = B ^ C
+// 5 5 => out(b % 8)
+// 3 0 => if(a != 0) goto 0
 
 int predictAForOutput(const std::vector<int> &desiredOutput) {
     int A = 0;
@@ -27,13 +36,13 @@ int predictAForOutput(const std::vector<int> &desiredOutput) {
                   << ", B: " << B << ", C: " << C << "\n";
 
         // Search for a candidate value of A that matches the output
-        for (int candidateA = 0; candidateA < INT_MAX; candidateA += 256) { // Wider range
+        for (int candidateA = 0; candidateA < INT_MAX; candidateA += 256) {
             int tempA = candidateA, tempB = B, tempC = C;
 
             if (const int output = computeOutput(tempA, tempB, tempC); output == targetOutput) {
-                A = candidateA;  // Update A to candidate value
-                B = tempB;       // Persist changes to B
-                C = tempC;       // Persist changes to C
+                A = candidateA;
+                B = tempB;
+                C = tempC;
                 found = true;
                 break;
             }
